@@ -1,0 +1,43 @@
+﻿@model project_airlines.Models.Supplier.Supplier
+
+<form asp-controller="Supplier" asp-action="_Edit" method="post">
+	<input asp-for="Id" hidden />
+	<div class="border p-3 mt-4">
+		@*<div class="row pb-2">
+			<h2 class="text-primary">Edit Supplier</h2>
+			<hr />
+		</div>*@
+		<div asp-validation-summary="All">
+		</div>
+		<div class="mb-3">
+			<label asp-for="Name">Name</label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Address">Address</label>
+			<input asp-for="Address" class="form-control" />
+			<span asp-validation-for="Address" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="mobile_phone">Mobile Phone</label>
+			<input asp-for="mobile_phone" class="form-control" />
+			<span asp-validation-for="mobile_phone" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="email">Email</label>
+			<input asp-for="email" class="form-control" />
+			<span asp-validation-for="email" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width: 150px">Update</button>
+		<a asp-controller="Supplier" asp-action="Index" class="btn btn-secondary" style="width: 150px">
+			Back
+		</a>
+	</div>
+</form>
+
+@section Scripts {
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
