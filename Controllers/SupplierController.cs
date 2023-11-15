@@ -19,13 +19,8 @@ namespace project_airlines.Controllers
 			_db = db;
 
 		}
-
-	
-
 		public async Task<IActionResult> Index(int? page, string? query)
 		{
-
-
 			int pageSize = 3; // Define the number of items per page 
 			int pageNumber = (page ?? 1); // If no page is specified, default to page 1
 
@@ -36,8 +31,6 @@ namespace project_airlines.Controllers
 				long phoneQuery;
 				bool isPhoneQuery = long.TryParse(query, out phoneQuery);
 				query = query.ToLower(); // Convert the query to lowercase for case-insensitive search
-
-				// Perform a search based on the query
 				supplierSearch = supplierSearch.Where(s =>
 					s.Name.ToLower().Contains(query) ||
 					s.email.ToLower().Contains(query) ||
@@ -63,9 +56,6 @@ namespace project_airlines.Controllers
 		{
 			return View();
 		}
-
-
-		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> _Create(Supplier obj, IFormFile? SupplierImage)
@@ -126,8 +116,6 @@ namespace project_airlines.Controllers
 			{
 				return NotFound(); // Return a 404 error if the supplier is not found
 			}
-
-			
 			//the action returns a partial view named "_Edit" with the "supplierFromDb" object as the model.
 			return PartialView("_Edit", supplierFromDb);
 		}

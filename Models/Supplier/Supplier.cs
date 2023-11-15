@@ -25,8 +25,6 @@ namespace project_airlines.Models.Supplier
 		public string email { get; set; }
 
 
-		//public string name {  get; set; }
-
 		public byte[]? SupplierImage { get; set; }
 
 

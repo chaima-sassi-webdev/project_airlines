@@ -21,7 +21,6 @@ namespace project_airlines.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -188,11 +187,9 @@ namespace project_airlines.Migrations
 
                     b.Property<int>("FN_NUMBER")
                         .HasColumnType("int");
-
                     b.Property<string>("ID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("PAX_BOOKED_C")
                         .HasColumnType("int");
 
@@ -204,7 +201,6 @@ namespace project_airlines.Migrations
 
                     b.Property<int>("PAX_FLOWN_Y")
                         .HasColumnType("int");
-
                     b.HasKey("MarketIdentifier");
 
                     b.ToTable("MarketDetails");
@@ -286,11 +282,9 @@ namespace project_airlines.Migrations
 
                     b.Property<float>("Filling_Ratio")
                         .HasColumnType("real");
-
                     b.Property<string>("Pays")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Traffic_Passenger")
                         .HasColumnType("int");
 
@@ -302,7 +296,6 @@ namespace project_airlines.Migrations
 
                     b.ToTable("TopCountries");
                 });
-
             modelBuilder.Entity("project_airlines.Models.User.User", b =>
                 {
                     b.Property<string>("Id")

@@ -11,7 +11,6 @@ namespace project_airlines.Models.TopCountries
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 		public float Filling_Ratio { get; set; }
-
 		public int Traffic_Passenger { get; set; }
 
 		public string Zonegeo { get; set; }
@@ -19,6 +18,5 @@ namespace project_airlines.Models.TopCountries
 		public string Pays { get; set; }
 		[NotMapped]
 		public List<string> GroupedCountries { get; set; }
-		
 	}
 }

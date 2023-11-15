@@ -20,20 +20,20 @@ using System.Collections.Generic;
 
 namespace project_airlines.Controllers
 {
-	public class HomeController : Controller
-	{
-		private readonly ILogger<HomeController> _logger;
-		private readonly ApplicationDbContext _db;
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _db;
 
 
-		public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
-		{
-			_db = db;
-			_logger = logger;
-		}
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
+        {
+            _db = db;
+            _logger = logger;
+        }
 
-		public async Task<IActionResult> Calculate()
-		{
+        public async Task<IActionResult> Calculate()
+        {
             var firstPart = new List<CalculationVariables>();
             var secondPart = new List<CalculationVariables>();
             var dictionary = new Dictionary<string, List<CalculationVariables>>();
@@ -144,39 +144,30 @@ namespace project_airlines.Controllers
             dictionary.Add("secondPart", secondPart);
             return View(dictionary);
         }
-		public async Task<IActionResult> Index()
-		{
-			var result = await Calculate();
-			var dictionary = (result as ViewResult)?.Model as Dictionary<string, List<CalculationVariables>>;
+        public async Task<IActionResult> Index()
+        {
+            var result = await Calculate();
+            var dictionary = (result as ViewResult)?.Model as Dictionary<string, List<CalculationVariables>>;
             return View(dictionary["firstPart"]);
 
         }
 
         [HttpGet]
-		public async Task<IActionResult> _GroupedCountries()
-		{
-			var result = await Calculate();
-			var dictionary = (result as ViewResult)?.Model as Dictionary<string, List<CalculationVariables>>;
-			return PartialView("_GroupedCountries", dictionary["secondPart"]);
-		}
+        public async Task<IActionResult> _GroupedCountries()
+        {
+            var result = await Calculate();
+            var dictionary = (result as ViewResult)?.Model as Dictionary<string, List<CalculationVariables>>;
+            return PartialView("_GroupedCountries", dictionary["secondPart"]);
+        }
+        public IActionResult Privacy()
+            {
+                return View();
+            }
 
-
-
-
-
-
-
-
-
-		public IActionResult Privacy()
-		{
-			return View();
-		}
-
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-		}
-	}
-}
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+            {
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+    } 
