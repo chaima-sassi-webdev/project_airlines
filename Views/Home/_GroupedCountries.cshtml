@@ -1,0 +1,90 @@
+﻿@model List<project_airlines.Models.CalculationVariables>
+@{
+    ViewData["Title"] = "_GroupedCountries";
+}
+
+
+
+
+<table class=" table table-bordered table-hover table-secondary" style="margin-top:30px" asp-controller="Home" asp-action="_GroupedCountries">
+	<thead class="table-dark text-white">
+		<tr>
+			<th scope="col">
+				الموقع الجغرافي
+				حسب السوق
+			</th>
+			<th scope="col">
+				حركة
+				المسافرين
+			</th>
+
+			<th scope="col">
+				المقاعد
+				المعروضة
+			</th>
+			<th scope="col">نسبة التعبئة</th>
+			<th scope="col">
+				حصة رقم المعاملت
+				لكل سوق تجاري
+			</th>
+			<th scope="col">
+				العدد الجمالي
+				لمسافري
+				الدرجة الولى
+			</th>
+			<th scope="col">
+				معدل قيمة
+				التذكرةالواحدة
+				(R.Moy)( دينار
+				(تونسي
+			</th>
+			<th scope="col">
+				رقم المعاملت (مليون
+				(دينار تونسي
+			</th>
+			@* <th scope="col">
+				حصة حركة
+				المسافرين لكل
+				سوق تجاري
+			</th> *@
+				
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var variable in Model)
+		{
+			<tr class="table-primary">
+				<td style="font-weight:bold">
+					@variable.ZoneGeo.ToUpper()
+				</td>
+				<td style="font-weight:bold">@variable.Traffic_Passenger</td>
+				<td style="font-weight:bold">@variable.Offered_seats</td>
+				<td style="font-weight:bold">@variable.Filling_Ratio %</td>
+				<td style="font-weight: bold">@variable.MarketPassengerShare_T % </td>
+				<td style="font-weight: bold">@variable.TotalFirstClassPassenger_T </td>
+				<td style="font-weight: bold">@variable.AverageTicketValue_TND_T </td>
+				<td style="font-weight: bold">@variable.TransactionNumber_Million_TND_T </td>
+@* 				<td style="font-weight: bold">@variable.MarketTransactionShare </td>
+ *@				@if( variable.Countries != null)
+				{
+					@foreach (var item in variable.Countries)
+					{
+						<tr>
+							<td> @item.Country.ToLower()</td>
+							 <td>@item.TrafficPassenger</td>
+							<td>@item.OfferedSeats</td>
+							<td>@item.FillingRatio %</td>
+							<td>@item.MarketPassengerShare %</td>
+							<td>@item.TotalFirstClassPassenger </td>
+							<td>@item.AverageTicketValue_TND </td>
+							<td>@item.TransactionNumber_Million_TND </td>
+						</tr>
+					}
+				}	
+			</tr>
+		}
+	</tbody>
+</table>
+
+
+

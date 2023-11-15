@@ -1,0 +1,43 @@
+﻿@model project_airlines.Models.Supplier.Supplier
+<form asp-controller="Supplier" method="post" asp-action="Delete">
+	<input asp-for="Id" hidden />
+	<div class="border p-3 mt-4">
+		@*<div class="row pb-2">
+			<h2 class="text-primary">Delete Supplier</h2>
+			<hr />
+		</div>*@
+		<!--<div asp-validation-summary="All">-->
+
+		<div class="mb-3">
+			<label asp-for="Name">Name</label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" disabled class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Address">Address</label>
+			<input asp-for="Address" class="form-control" />
+			<span asp-validation-for="Address" disabled class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="mobile_phone">Mobile Phone</label>
+			<input asp-for="mobile_phone" class="form-control" />
+			<span asp-validation-for="mobile_phone" disabled class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="email">Email</label>
+			<input asp-for="email" class="form-control" />
+			<span asp-validation-for="email" disabled class="text-danger"></span>
+		</div>
+		<div class="modal-footer justify-content-start">
+			<button type="submit" class="btn btn-danger" style="width: 150px">Delete</button>
+			<a asp-controller="Supplier" asp-action="Index"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></a>
+		</div>
+	</div>
+</form>
+
+@section Scripts {
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
+

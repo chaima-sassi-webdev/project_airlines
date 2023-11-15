@@ -1,0 +1,484 @@
+﻿@model List<project_airlines.Models.CalculationVariables>
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<!-- My CSS -->
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/project_airlines.styles.css" asp-append-version="true" />
+	<!-- Boxicons -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!--Include a chart.js file -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+	<title>Airline</title>
+</head>
+<body>
+
+
+	<div class="wrapper">
+		<!-- SIDEBAR -->
+		<section id="sidebar">
+			<a href="#" class="brand">
+				<img src="~/assets/logo.png"/>
+			</a>
+			<ul class="side-menu top">
+				<li class="active">
+					<a asp-controller="Supplier" asp-action="Index">
+						<i class='bx bxs-dashboard'></i>
+						<span class="text">Dashboard</span>
+					</a>
+				</li>
+				<li>
+					<a asp-controller="Supplier" asp-action="Index">
+						<i class='bx bxs-group'></i>
+						<span class="text">Suppliers</span>
+					</a>
+				</li>
+@* 				<li>
+					<a href="#">
+						<i class='bx bxs-doughnut-chart'></i>
+						<span class="text">Analytics</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class='bx bxs-message-dots'></i>
+						<span class="text">Message</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class='bx bxs-group'></i>
+						<span class="text">Team</span>
+					</a>
+				</li> *@
+			</ul>
+			<ul class="side-menu">
+				<li>
+					<a href="#">
+						<i class='bx bxs-cog'></i>
+						<span class="text">Settings</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="logout">
+						<i class='bx bxs-log-out-circle'></i>
+						<span class="text">Logout</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+		<!-- SIDEBAR -->
+		<!-- CONTENT -->
+		<section id="content">
+			<!-- NAVBAR -->
+			<nav>
+				<i class='bx bx-menu'></i>
+				
+				
+				<input type="checkbox" id="switch-mode" hidden>
+				<label for="switch-mode" class="switch-mode"></label>
+				<a href="#" class="notification">
+					<i class='bx bxs-bell'></i>
+					<span class="num">8</span>
+				</a>
+				<a href="#" class="profile">
+					<img src="img/people.png">
+				</a>
+			</nav>
+			
+			<!-- NAVBAR -->
+			<!-- MAIN -->
+		<main>
+				<div>
+					
+					
+					<div class="head-title">
+						<div class="left">
+							<h1>النشاط التجاري الاجمالي المؤقت</h1>
+							<ul class="breadcrumb">
+								<li>
+									<a href="#">Dashboard</a>
+								</li>
+								<li><i class='bx bx-chevron-right'></i></li>
+								<li>
+									<a class="active" href="#">Home</a>
+								</li>
+							</ul>
+						</div>
+						<a href="#" class="btn-download">
+							<i class='bx bxs-cloud-download'></i>
+							<span class="text">Download PDF</span>
+						</a>
+					</div>
+
+					<ul class="box-info">
+						<li>
+							<i class='bx bxs-calendar-check'></i>
+							<span class="text">
+								<h3>1020</h3>
+								<p>New Order</p>
+							</span>
+						</li>
+						<li>
+							<i class='bx bxs-group'></i>
+							<span class="text">
+								<h3>2834</h3>
+								<p>Visitors</p>
+							</span>
+						</li>
+						<li>
+							<i class='bx bxs-dollar-circle'></i>
+							<span class="text">
+								<h3>$2543</h3>
+								<p>Total Sales</p>
+							</span>
+						</li>
+					</ul>
+
+
+					<div class="table-data">
+
+
+						<!-- Row start -->
+						<div class="row align-items-center">
+							<h3 style="text-align: center ; margin-bottom: 75px">مؤشرات النشاط التجاري لهم السواق من 01 سبتمبر 2023 إلى 11 سبتمبر 2023</h3>
+							<div class="col-xxl-2 col-sm-3 col-12" id="sidebarContent">
+								<div class="d-grid gap-4">
+									<div class="d-flex align-items-center">
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/france.png" class="img-2x rounded-2" alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+										<div class="ms-3">
+											<h6 class="text-muted">فرنسا</h6>
+											<h3 class="m-0">70.2%</h3>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/germany.png" class="img-2x rounded-2"
+												 alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+										<div class="ms-3">
+											<h6 class="text-muted">ألمانيا</h6>
+											<h3 class="m-0">74.6%</h3>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/italia.png" class="img-2x rounded-2"
+												 alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+										<div class="ms-3">
+											<h6 class="text-muted">إيطاليا</h6>
+											<h3 class="m-0">69.6%</h3>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/alger.jpg" class="img-2x rounded-2"
+												 alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+										<div class="ms-3">
+											<h6 class="text-muted">الجزائر</h6>
+											<h3 class="m-0">90.1%</h3>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/africa_sud.jpg" class="img-2x rounded-2"
+												 alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+										<div class="ms-3">
+											<h6 class="text-muted">أفريقيا جنوب الصحراء</h6>
+											<h3 class="m-0">74.1%</h3>
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/turkey.png" class="img-2x rounded-2"
+												 alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+										<div class="ms-3">
+											<h6 class="text-muted">تركيا</h6>
+											<h3 class="m-0">79.4%</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xxl-8 col-sm-6 col-12" id="mainContent">
+								<div id="world-map-markers3" class="chart-height-xxl position-relative"></div>
+							</div>
+							<div class="col-xxl-2 col-sm-3 col-12" id="extraContent">
+								<div class="d-grid gap-4">
+									<div class="d-flex align-items-center justify-content-end">
+										<div class="me-3 text-end">
+											<h6 class="text-muted">المغرب</h6>
+											<h3 class="m-0">80.4%</h3>
+										</div>
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/maghreb.png" class="img-2x rounded-2"
+												 alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+									</div>
+									<div class="d-flex align-items-center justify-content-end">
+										<div class="me-3 text-end">
+											<h6 class="text-muted">
+												سويسرا
+											</h6>
+											<h3 class="m-0">68.9%</h3>
+										</div>
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/suissre.jpg" class="img-2x rounded-2"
+												 alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+									</div>
+									<div class="d-flex align-items-center justify-content-end">
+										<div class="me-3 text-end">
+											<h6 class="text-muted">
+												بلجيكا
+											</h6>
+											<h3 class="m-0">77.2%</h3>
+										</div>
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/belgique.png" class="img-2x rounded-2"
+												 alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+									</div>
+									<div class="d-flex align-items-center justify-content-end">
+										<div class="me-3 text-end">
+											<h6 class="text-muted">
+												كندا
+											</h6>
+											<h3 class="m-0">79.1%</h3>
+										</div>
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/canada.jpg" class="img-2x rounded-2"
+												 alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+									</div>
+									<div class="d-flex align-items-center justify-content-end">
+										<div class="me-3 text-end">
+											<h6 class="text-muted">
+												بريطانيا
+											</h6>
+											<h3 class="m-0">73.4%</h3>
+										</div>
+										<div class="icon-box lg border border-primary rounded-4" style="padding: 15px; border-radius:15px">
+											<img src="~/assets/britagne.png" class="img-2x rounded-2"
+												 alt="Bootstrap Gallery" style="width: 50px; height: 50px;" />
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<canvas id="mixedChart" style="margin-top: 65px;"></canvas>
+							<script>
+								// Razor code to generate JavaScript labels array
+								var Country = [@{
+									if (Model != null)
+									{
+										foreach (var item in Model)
+										{
+											@: "@item.Pays.ToLower()", // Ensure the generated JavaScript string is properly formatted
+										}
+									}
+									else
+									{
+										@: "No data available.",
+									}
+								}];
+								var TrafficPassenger = [@{
+									if (Model != null)
+									{
+										foreach (var item in Model)
+										{
+											@: "@item.Traffic_Passenger", // Ensure the generated JavaScript string is properly formatted
+										}
+									}
+									else
+									{
+										@: "No data available.",
+									}
+								}];
+								var Filling_Ratio = [@{
+									if (Model != null)
+									{
+										foreach (var item in Model)
+										{
+											@:parseFloat("@item.Filling_Ratio"),
+										}
+									}
+									else
+									{
+										@: "No data available.",
+									}
+								}];
+
+								// Define the data for your bar chart
+								var data = {
+									labels: Country, // Use labels to specify the labels for the bars
+									datasets: [{
+										label: 'حركة المسافرين ',
+										data: TrafficPassenger, // Use data to specify the data values for the bars
+										type: 'bar', // Use 'bar' type for this dataset
+										backgroundColor: 'rgba(54, 162, 235, 0.2)',
+										borderColor: 'rgba(54, 162, 235, 1)',
+										borderWidth: 1,
+										yAxisID: 'y1',
+
+									},
+									{
+										label: 'نسبة التعبئة',
+										data: Filling_Ratio,
+										type: 'line',
+										backgroundColor: 'rgba(255, 99, 132, 1)',
+										borderColor: 'rgba(255, 99, 132, 1)',
+										borderWidth: 2,
+										fill: false,
+										yAxisID: 'y',
+									}]
+								};
+
+								// Define chart options
+								var options = {
+									scales: {
+										y: {
+											type: 'linear',
+											position: 'left',
+											beginAtZero: true,
+											suggestedMin: 0,
+											suggestedMax: 100,
+											stepSize: 50,
+											ticks: {
+												min: 0,
+												max: 100,
+												stepSize: 50,
+												callback: function (value, index, values) {
+													return value + '%';
+												},
+											},
+										},
+										y1: {
+											type: 'linear',
+											position: 'top', // Position the y2 axis at the top
+											position: 'right',
+											beginAtZero: true,
+											suggestedMin: 0,
+											// suggestedMax: 45,
+											stepSize: 5,
+											ticks: {
+												min: 0,
+												// max: 45,
+												stepSize: 5,
+												callback: function (value, index, values) {
+													return (value / 1000) + 'K';
+												},
+											},
+										},
+									}
+									,
+									plugins: {
+										datalabels: {
+											display: true,
+											anchor: 'top',
+											align: 'top',
+											color: 'black',
+											font: {
+												weight: 'normal',
+											},
+											formatter: function (value, context) {
+												if (context.datasetIndex === 0) {
+													// Add 'K' to the end of labels for the TrafficPassenger dataset
+													return (value / 1000) + 'K';
+												} else if (context.datasetIndex === 1) {
+													// Add '%' to the end of labels for the Filling_Ratio dataset
+													return value + '%';
+												}
+												return value; // For other datasets, return the value as-is
+											},
+										},
+									},
+								};
+
+								// Create the bar chart
+								var ctx = document.getElementById('mixedChart').getContext('2d');
+								var myBarChart = new Chart(ctx, {
+									type: 'bar', // Use 'bar' type for a bar chart
+									data: data,
+									options: options,
+									plugins: [ChartDataLabels]
+								});
+							</script>
+						</div>
+						<!-- Vector Maps -->
+						<script src="~/vendor/jvectormap/jquery-jvectormap-2.0.5.min.js"></script>
+						<script src="~/vendor/jvectormap/world-mill-en.js"></script>
+						<script src="~/vendor/jvectormap/gdp-data.js"></script>
+						<script src="~/vendor/jvectormap/continents-mill.js"></script>
+						<script src="~/vendor/jvectormap/custom/world-map-markers2.js"></script>
+
+					</div>
+					<div id="groupedCountriesContainer" asp-controller="Home" asp-action="_GroupedCountries">
+						@await Html.PartialAsync("_GroupedCountries", new List<project_airlines.Models.CalculationVariables>()) 
+					</div>
+					
+				</div>
+		</section>
+		
+		</main>
+			<!-- MAIN -->
+		</section>
+		<!-- CONTENT -->
+
+
+	</div>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<div id="groupedCountriesContainer">
+		
+	</div>
+	<script>
+		function getGroupedCountries() {
+			$.ajax({
+				url: "/Home/_GroupedCountries", // Replace with your controller and action
+				method: "GET", // Change this to GET or POST as needed
+				success: function (data) {
+					// Replace the content of the #groupedCountriesContainer div with the loaded data
+					$("#groupedCountriesContainer").html(data);
+				},
+				error: function () {
+					console.log("Error while fetching data.");
+				}
+			});
+		}
+		// Call the function when the page loads or reloads
+		$(document).ready(function () {
+			getGroupedCountries();
+		});
+	</script>
+
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	<!-- JavaScript/jQuery to add 'sidebar-open' class when the sidebar is open -->
+	<script>
+		$(document).ready(function () {
+			const menuBar = $('#content nav .bx.bx-menu');
+			const container = $('.container');
+
+			menuBar.click(function () {
+				container.toggleClass('sidebar-open');
+			});
+		});
+	</script>
+</body>
+</html>

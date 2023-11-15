@@ -1,0 +1,52 @@
+﻿@model project_airlines.Models.Supplier.Supplier
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<form asp-controller="Supplier" asp-action="_Create" method="post" enctype="multipart/form-data">
+    @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewData["ErrorMessage"]
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(ViewData["SuccessMessage"] as string))
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewData["SuccessMessage"]
+        </div>
+    }
+
+    <div class="border p-3 mt-4">
+        <div class="mb-3">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address">Address</label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="mobile_phone">Mobile Phone</label>
+            <input asp-for="mobile_phone" class="form-control" type="tel" />
+            <span asp-validation-for="mobile_phone" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="email">Email</label>
+            <input asp-for="email" class="form-control" type="email" />
+            <span asp-validation-for="email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formFile" asp-for="SupplierImage">Upload Photo</label>
+            <input type="file" asp-for="SupplierImage" id="formFile" class="form-control-file" />
+            <span asp-validation-for="SupplierImage" class="text-danger"></span>
+        </div>
+
+        <div class="modal-footer justify-content-start">
+            <button type="submit" class="btn btn-primary" style="width: 150px">Create</button>
+            <a asp-controller="Supplier" asp-action="Index"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button></a>
+
+        </div>
+    </div>
+</form>

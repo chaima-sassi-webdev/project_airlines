@@ -1,0 +1,84 @@
+﻿@model project_airlines.Models.User.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - project_airlines</title>
+    <link rel="stylesheet" href="~/css/Register.css" />
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+        <div class="card card0 border-0">
+                <div class="row d-flex justify-content-center">  
+                  <img src="~/assets/logo.png" class="logo">
+                </div>
+                <div class="">
+                    <div class="card2 card border-0 px-4 py-5">
+                         <div class=" row mb-4 px-3">
+                        <form asp-controller="User" asp-action="Register" method="post">
+                       
+                            <div class="row px-3">
+                                <label class="mb-1" asp-for="UserName"><h6 class="mb-0 text-sm">Fullname</h6></label>
+                                <input type="text" asp-for="UserName" name="UserName" placeholder="Enter your Full Name " />
+                                <span asp-validation-for="UserName" class="text-red-95"></span>
+                            </div>
+                            <div class="row px-3">
+                                <label class="mb-1" asp-for="Email"><h6 class="mb-0 text-sm">Email Address</h6></label>
+                                <input asp-for="Email" type="text" name="Email" placeholder="Enter a valid email address"/>
+                                <span asp-validation-for="Email"></span>
+                            </div>
+                            <div class="row px-3">
+                                <label class="mb-1" asp-for="Password"><h6 class="mb-0 text-sm">Password</h6></label>
+                                <input type="password" asp-for="Password" name="Password" placeholder="Enter password"/>
+                                <span asp-validation-for="Password"></span>
+                            </div>
+                             <div class="row px-3">
+                                <label class="mb-1" asp-for="Repwd"><h6 class="mb-0 text-sm">Password</h6></label>
+                                <input type="password" asp-for="Repwd" name="Repwd" placeholder="Confirm  password"/>
+                                <span asp-validation-for="Repwd"></span>
+                            </div>
+                            <div class="row px-3">
+                                <label asp-for="Gender"><h6 class="mb-0 text-sm">Gender</h6></label>
+                                <div class="p-t-10 text-center">
+                                    <label class="radio-container m-r-45">
+                                        Male
+                                        <input type="radio" checked="checked" asp-for="Gender" value="M" name="Gender">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="radio-container">
+                                        Female
+                                        <input type="radio" asp-for="Gender" value="F" name="Gender">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <span asp-validation-for="Gender"></span>
+                                </div>
+                                  
+                              </div>
+                            
+                            <div class="row px-3 mb-4">
+                                <a href="#" class="ml-auto mb-0 text-sm ">Forgot Password?</a>
+                            </div>
+                            <div class="row mb-3 px-3 justify-content-center">
+                               <button type="submit" class="btn btn-blue text-center" asp-controller="User" asp-action="Register">Register</button>
+                            </div>
+                            <div class="row mb-4 px-3">
+                                <small class="font-weight-bold text-center">You already have an account? <a class="text-danger ">Login</a></small>
+                            </div>
+                            </form>
+                         </div>
+                    </div>
+                </div>
+
+            
+        </div>
+    </div>
+
+</body>
+</html>
